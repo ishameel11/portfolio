@@ -1,10 +1,11 @@
+"use client";
 import Image from "next/image";
 import React from "react";
 import Profile from "../public/profile2.jpg";
 
 const About = () => {
   return (
-    <div className="w-full md:h-screen p-2 flex items-center py-16">
+    <div id="about" className="w-full md:h-screen p-2 flex items-center py-16">
       <div className="max-w-[1240px] m-auto md:grid grid-cols-3 gap-8">
         <div className="col-span-2">
           <p className="text-xl tracking-widest text-[#660066]">About</p>
@@ -18,9 +19,15 @@ const About = () => {
             pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
             culpa qui officia deserunt mollit anim id est laborum.
           </p>
-          <p className="py-2 text-gray-600 underline cursor-pointer">
-            Check out some of my latest projects.
-          </p>
+          <a
+            href="https://github.com/ishameel11?tab=repositories"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <p className="py-2 text-gray-600 underline cursor-pointer">
+              Check out some of my latest projects.
+            </p>
+          </a>
         </div>
         <div className="w-full rounded-full h-auto m-auto flex items-center justify-center ease-in duration-300">
           <Image

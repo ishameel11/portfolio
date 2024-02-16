@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Logo from "../public/portfolio.png";
 import Link from "next/link";
 import { AiOutlineClose, AiOutlineMail, AiOutlineMenu } from "react-icons/ai";
@@ -9,11 +9,31 @@ import { BsFillPersonFill, BsPersonFillDown } from "react-icons/bs";
 
 const NavBar1 = () => {
   const [navbar, setNavbar] = useState(false);
+  const [shadow, setShadow] = useState(false);
+
   const handleNavbar = () => {
     setNavbar(!navbar);
   };
+
+  useEffect(() => {
+    const handleShadow = () => {
+      if (window.scrollY >= 90) {
+        setShadow(true);
+      } else {
+        setShadow(false);
+      }
+    };
+    window.addEventListener("scroll", handleShadow);
+  }, [shadow]);
+
   return (
-    <div className="fixed w-full h-20 shadow-xl z-[100]">
+    <div
+      className={
+        shadow
+          ? "fixed w-full h-20 shadow-xl z-[100]"
+          : "fixed w-full h-20 z-[100]"
+      }
+    >
       <div className="flex justify-between items-center w-full h-full px-2 2xl:px-16 ">
         <Image
           width={120}
@@ -27,16 +47,16 @@ const NavBar1 = () => {
             <Link href="/">
               <li className="ml-10 hover:border-b text-sm">Home</li>
             </Link>
-            <Link href="/">
+            <Link href="/#about">
               <li className="ml-10 hover:border-b text-sm">About</li>
             </Link>
-            <Link href="/">
+            <Link href="/#skills">
               <li className="ml-10 hover:border-b text-sm">Skills</li>
             </Link>
-            <Link href="/">
+            <Link href="/#projects">
               <li className="ml-10 hover:border-b text-sm">Projects</li>
             </Link>
-            <Link href="/">
+            <Link href="/#contact">
               <li className="ml-10 hover:border-b text-sm">Contact</li>
             </Link>
           </ul>
@@ -77,30 +97,67 @@ const NavBar1 = () => {
           <div className="py-4 flex flex-col">
             <ul className="">
               <Link href="/">
-                <li className="py-4 hover:border-b text-sm">Home</li>
+                <li
+                  onClick={() => setNavbar(false)}
+                  className="py-4 hover:border-b text-sm"
+                >
+                  Home
+                </li>
               </Link>
-              <Link href="/">
-                <li className="py-4 hover:border-b text-sm">About</li>
+              <Link href="/#about">
+                <li
+                  onClick={() => setNavbar(false)}
+                  className="py-4 hover:border-b text-sm"
+                >
+                  About
+                </li>
               </Link>
-              <Link href="/">
-                <li className="py-4 hover:border-b text-sm">Skills</li>
+              <Link href="/#skills">
+                <li
+                  onClick={() => setNavbar(false)}
+                  className="py-4 hover:border-b text-sm"
+                >
+                  Skills
+                </li>
               </Link>
-              <Link href="/">
-                <li className="py-4 hover:border-b text-sm">Projects</li>
+              <Link href="/#projects">
+                <li
+                  onClick={() => setNavbar(false)}
+                  className="py-4 hover:border-b text-sm"
+                >
+                  Projects
+                </li>
               </Link>
-              <Link href="/">
-                <li className="py-4 hover:border-b text-sm">Contact</li>
+              <Link href="/#contact">
+                <li
+                  onClick={() => setNavbar(false)}
+                  className="py-4 hover:border-b text-sm"
+                >
+                  Contact
+                </li>
               </Link>
             </ul>
             <div className="pt-10">
               <p className="tracking-widest text-[#660066]">Let's Connect</p>
               <div className="flex items-center justify-between my-4 w-full sm:w-[80%]">
-                <div className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300">
-                  <FaLinkedinIn />
-                </div>
-                <div className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300">
-                  <FaGithub />
-                </div>
+                <a
+                  href="https://www.linkedin.com/in/isha-meel-3a3050286/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <div className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300">
+                    <FaLinkedinIn />
+                  </div>
+                </a>
+                <a
+                  href="https://github.com/ishameel11"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <div className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300">
+                    <FaGithub />
+                  </div>
+                </a>
                 <div className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300">
                   <AiOutlineMail />
                 </div>
