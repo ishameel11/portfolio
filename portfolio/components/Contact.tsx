@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, ChangeEvent, FormEvent } from "react";
 import { AiOutlineMail } from "react-icons/ai";
 import { BsFillPersonFill, BsFillPersonLinesFill } from "react-icons/bs";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
@@ -17,11 +17,11 @@ const Contact = () => {
     message: "",
   });
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
@@ -169,7 +169,12 @@ const Contact = () => {
                     rows={10}
                     name="message"
                     value={formData.message}
-                    onChange={handleChange}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        [e.target.name]: e.target.value,
+                      })
+                    }
                   ></textarea>
                 </div>
                 <button className="sm:w-2/5 md:w-2/5  p-4 text-gray-100 mt-4">

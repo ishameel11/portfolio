@@ -2,7 +2,6 @@ import React from "react";
 import Projectitem from "./Projectitem";
 import Project1 from "../public/todolist.png";
 import Image from "next/image";
-import todolist from "./todolist";
 
 const Projects = () => {
   return (

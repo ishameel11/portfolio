@@ -1,11 +1,11 @@
 import React from "react";
 import Project1 from "../public/todolist.png";
 import Link from "next/link";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 
 interface ProjectItemProps {
   title: string;
-  backgroundImg: string;
+  backgroundImg: StaticImageData;
   projectUrl: string;
 }
 
